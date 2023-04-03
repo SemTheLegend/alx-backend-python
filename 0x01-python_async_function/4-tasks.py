@@ -16,16 +16,15 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     Returns a list of float values in ascending order.
     """
 
-    res = []
+    tasks = []
+    delays = []
+
     for i in range(n):
         task = task_wait_random(max_delay)
-        await task
-        res.append(task)
+        tasks.append(task)
 
-    for i in range(0, len(res)):
-        for j in range(i + 1, len(res)):
-            if res[i] > res[j]:
-                temp = res[i]
-                res[i] = res[j]
-                res[j] = temp
-    return res
+    for task in asyncio.as_completed((tasks)):
+        delay = await task
+        delays.append(delay)
+
+    return delays
