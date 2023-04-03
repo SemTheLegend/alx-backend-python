@@ -10,4 +10,6 @@ def task_wait_random(max_delay: int) -> float:
     """Returns a `asyncio.Task`."""
 
     res = asyncio.create_task(wait_random(max_delay))
+    await res
+
     return res
