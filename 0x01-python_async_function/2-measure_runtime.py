@@ -15,8 +15,7 @@ async def measure_time(n: int, max_delay: int) -> float:
     """Returns the total execution time for this function."""
 
     start = time.perf_counter()
-    res = await wait_n(n, max_delay)
+    await wait_n(n, max_delay)
     total_time = time.perf_counter() - start
-    
 
-    return res
+    return total_time 
