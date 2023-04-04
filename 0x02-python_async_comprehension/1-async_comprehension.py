@@ -4,7 +4,6 @@ Module defines a async comprehension function.
 """
 
 import asyncio
-import random
 from typing import Iterator
 
 async_generator = __import__('0-async_generator').async_generator
